@@ -92,9 +92,9 @@ export default class WeekView extends Component {
 
       this.currentPageIndex = this.pageOffset;
       this.setState({
-          currentMoment: moment(initialDates[this.currentPageIndex]).toDate(),
-          initialDates,
-        },
+        currentMoment: moment(initialDates[this.currentPageIndex]).toDate(),
+        initialDates,
+      },
         () => {
           this.eventsGrid.scrollToIndex({
             index: this.pageOffset,
@@ -193,7 +193,7 @@ export default class WeekView extends Component {
     };
 
     const newState = {};
-    let newStateCallback = () => {};
+    let newStateCallback = () => { };
     // The final target may change, if pages are added
     let targetIndex = target;
 
@@ -254,7 +254,7 @@ export default class WeekView extends Component {
       const newState = {
         currentMoment: newMoment,
       };
-      let newStateCallback = () => {};
+      let newStateCallback = () => { };
 
       if (movedPages < 0 && newPage < this.pageOffset) {
         this.prependPagesInPlace(initialDates, 1);
@@ -314,8 +314,10 @@ export default class WeekView extends Component {
         'days',
       );
     }
+
     for (let i = -this.pageOffset; i <= this.pageOffset; i += 1) {
-      const initialDate = moment(centralDate).add(numberOfDays * i, 'd');
+      // TODO Check initialdates generation (1 week spacing)
+      const initialDate = moment(centralDate).add(i, "w");
       initialDates.push(initialDate.format(DATE_STR_FORMAT));
     }
     return prependMostRecent ? initialDates.reverse() : initialDates;

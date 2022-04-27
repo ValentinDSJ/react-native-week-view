@@ -30,6 +30,7 @@ const Title = ({
           {
             fontSize: getFontSizeHeader(numberOfDays),
             textAlign: 'center',
+            display: 'none',
           },
           textStyle,
         ]}
