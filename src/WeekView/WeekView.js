@@ -128,12 +128,11 @@ export default class WeekView extends Component {
   };
 
   prependPagesInPlace = (initialDates, nPages) => {
-    const { numberOfDays } = this.props;
     const daySignToTheFuture = this.getSignToTheFuture();
 
     const first = initialDates[0];
     const daySignToThePast = daySignToTheFuture * -1;
-    const addDays = numberOfDays * daySignToThePast;
+    const addDays = 7 * daySignToThePast;
     for (let i = 1; i <= nPages; i += 1) {
       const initialDate = moment(first).add(addDays * i, 'd');
       initialDates.unshift(initialDate.format(DATE_STR_FORMAT));
@@ -141,11 +140,10 @@ export default class WeekView extends Component {
   };
 
   appendPagesInPlace = (initialDates, nPages) => {
-    const { numberOfDays } = this.props;
     const daySignToTheFuture = this.getSignToTheFuture();
 
     const latest = initialDates[initialDates.length - 1];
-    const addDays = numberOfDays * daySignToTheFuture;
+    const addDays = 7 * daySignToTheFuture;
     for (let i = 1; i <= nPages; i += 1) {
       const initialDate = moment(latest).add(addDays * i, 'd');
       initialDates.push(initialDate.format(DATE_STR_FORMAT));
