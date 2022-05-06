@@ -158,7 +158,7 @@ export default class WeekView extends Component {
       'day',
     );
     const deltaDay = moment(targetDate).startOf('day').diff(currentDate, 'day');
-    const deltaIndex = Math.floor(deltaDay / numberOfDays);
+    const deltaIndex = Math.floor(deltaDay / 7);
     const signToTheFuture = this.getSignToTheFuture();
     const targetIndex = this.currentPageIndex + deltaIndex * signToTheFuture;
 
